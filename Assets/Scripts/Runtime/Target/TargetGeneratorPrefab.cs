@@ -1,5 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using VContainer;
 
 namespace Runtime.Target
@@ -16,12 +17,16 @@ namespace Runtime.Target
             _gameConfiguration = gameConfiguration;
         }
 
-        public async UniTask Generate(TargetData[] data, CancellationToken token)
+        public UniTask Generate(TargetData[] data, CancellationToken token)
         {
-            for (var count = 0; count < data.Length; count++)
+            foreach (var t in data)
             {
-                await UniTask.Yield();
+                var go = Object.Instantiate(_targetPrefab);
+                go.TargetData = t;
+                go.Place();
             }
+
+            return UniTask.CompletedTask;
         }
     }
 }
