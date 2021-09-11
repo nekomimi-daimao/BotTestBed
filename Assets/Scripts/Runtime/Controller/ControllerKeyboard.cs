@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BotTestBed.Runtime.Controller
 {
-    public class ControllerKeyboard : ControllerBase
+    public sealed class ControllerKeyboard : ControllerBase
     {
         private void OnEnable()
         {

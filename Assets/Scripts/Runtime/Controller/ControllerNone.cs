@@ -1,6 +1,6 @@
 namespace BotTestBed.Runtime.Controller
 {
-    public class ControllerNone : ControllerBase
+    public sealed class ControllerNone : ControllerBase
     {
     }
 }

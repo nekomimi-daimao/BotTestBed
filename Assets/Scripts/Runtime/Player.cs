@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Runtime;
 using UniRx;
 using UnityEngine;
 using VContainer;
@@ -8,12 +9,12 @@ using VContainer;
 namespace BotTestBed.Runtime.Controller
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
-    public class Player : MonoBehaviour
+    public sealed class Player : MonoBehaviour
     {
         private ControllerBase _controller;
 
         [Inject]
-        private void Init(ControllerBase controller)
+        private void Init(ControllerBase controller, GameConfiguration configuration)
         {
             this._controller = controller;
 
