@@ -4,9 +4,9 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Runtime.Target
+namespace Runtime.Target.Share
 {
-    public class TargetShareDummy : ITargetSharer
+    public sealed class TargetShareDummy : ITargetSharer
     {
         GameState IStateWorker.GameState => GameState.ShareTarget;
 

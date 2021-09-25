@@ -1,4 +1,4 @@
-namespace Runtime.Target
+namespace Runtime.Target.Share
 {
     /// <summary>
     /// <see cref="GameState.ShareTarget"/>
