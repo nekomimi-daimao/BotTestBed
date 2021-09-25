@@ -9,12 +9,6 @@ namespace Runtime
 {
     public class GameStateExecutor
     {
-        public enum WaitType
-        {
-            All,
-            Any,
-        }
-
         public static readonly Dictionary<GameState, WaitType> ExecutionState = new Dictionary<GameState, WaitType>
         {
             { GameState.ShareTarget, WaitType.All },
