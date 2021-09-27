@@ -5,12 +5,13 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using VContainer;
 
-namespace Runtime
+namespace Runtime.Executor
 {
-    public class GameStateExecutor
+    public sealed class GameStateExecutor
     {
         public static readonly Dictionary<GameState, WaitType> ExecutionState = new Dictionary<GameState, WaitType>
         {
+            { GameState.Connect, WaitType.All },
             { GameState.ShareTarget, WaitType.All },
             { GameState.GenerateTarget, WaitType.All },
         };
@@ -23,12 +24,17 @@ namespace Runtime
             _stateWorker = workers;
         }
 
-        private async UniTask Execute(CancellationToken baseToken)
+        public async UniTask Execute(CancellationToken baseToken)
         {
             foreach (var pair in ExecutionState)
             {
                 var state = pair.Key;
                 var waitType = pair.Value;
+
+                if (baseToken.IsCancellationRequested)
+                {
+                    break;
+                }
 
                 var source = CancellationTokenSource.CreateLinkedTokenSource(baseToken);
                 var token = source.Token;

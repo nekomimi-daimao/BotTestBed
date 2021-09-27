@@ -1,7 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace Runtime
+namespace Runtime.Executor
 {
     public interface IStateWorker
     {

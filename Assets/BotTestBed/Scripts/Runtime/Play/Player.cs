@@ -25,15 +25,13 @@ namespace BotTestBed.Runtime.Controller
 
             OnStickForceAsync(token).Forget();
             OnJumpAsync(token).Forget();
-            ResetAsync(token).Forget();
+            ResetPositionAsync(token).Forget();
         }
 
         private Rigidbody _rigidbody;
         private Collider _collider;
 
-
         private const float MoveForce = 10f;
-
         private const float ForceRatio = 0.3f;
 
         private async UniTaskVoid OnStickForceAsync(CancellationToken token)
@@ -95,7 +93,7 @@ namespace BotTestBed.Runtime.Controller
             }
         }
 
-        private async UniTaskVoid ResetAsync(CancellationToken token)
+        private async UniTaskVoid ResetPositionAsync(CancellationToken token)
         {
             var origin = Vector3.up;
             var distanceLimit = Mathf.Pow(12f, 2f);

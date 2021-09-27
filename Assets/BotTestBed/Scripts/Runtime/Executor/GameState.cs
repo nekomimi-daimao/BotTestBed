@@ -1,12 +1,13 @@
 using System;
 
-namespace Runtime
+namespace Runtime.Executor
 {
     [Flags]
     public enum GameState
     {
         Default,
         Wait,
+        Connect,
         ShareTarget,
         GenerateTarget,
         Start,
