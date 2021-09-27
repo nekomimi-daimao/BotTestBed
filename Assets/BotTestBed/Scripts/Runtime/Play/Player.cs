@@ -1,12 +1,13 @@
 using System;
 using System.Threading;
+using BotTestBed.Runtime.Controller;
 using Cysharp.Threading.Tasks;
 using Runtime;
 using UniRx;
 using UnityEngine;
 using VContainer;
 
-namespace BotTestBed.Runtime.Controller
+namespace BotTestBed.Runtime
 {
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public sealed class Player : MonoBehaviour
@@ -27,6 +28,8 @@ namespace BotTestBed.Runtime.Controller
             OnJumpAsync(token).Forget();
             ResetPositionAsync(token).Forget();
         }
+
+        public PlayerColor PlayerColor;
 
         private Rigidbody _rigidbody;
         private Collider _collider;
